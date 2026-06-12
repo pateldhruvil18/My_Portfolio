@@ -4,6 +4,7 @@ import { FiMenu, FiX } from 'react-icons/fi';
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import { HiOutlineMail } from 'react-icons/hi';
 import { cn } from '../../lib/utils';
+import profileImg from '../../assets/ai_profile_avatar.png';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,10 +19,10 @@ function Navbar() {
   });
 
   const socialLinks = [
-    { icon: <FaGithub size={18} />, url: 'https://github.com/yourusername' },
-    { icon: <FaLinkedin size={18} />, url: 'https://linkedin.com/in/yourusername' },
-    { icon: <FaInstagram size={18} />, url: 'https://instagram.com/yourusername' },
-    { icon: <HiOutlineMail size={20} />, url: 'mailto:your.email@example.com' }
+    { icon: <FaGithub size={18} />, url: 'https://github.com/pateldhruvil18' },
+    { icon: <FaLinkedin size={18} />, url: 'https://www.linkedin.com/in/dhruvil-patel-8a10b1273/' },
+    { icon: <FaInstagram size={18} />, url: 'https://www.instagram.com/dh_chaudhary_18/' },
+    { icon: <HiOutlineMail size={20} />, url: 'mailto:[EMAIL_ADDRESS]' }
   ];
 
   const menuItems = [
@@ -71,16 +72,17 @@ function Navbar() {
       transition={{ duration: 0.5 }}
       className={cn(
         'fixed inset-x-0 z-50 transition-all duration-500 ease-in-out',
-        isScrolled 
-          ? 'top-4 w-[90%] md:max-w-4xl lg:max-w-6xl mx-auto bg-white/70 backdrop-blur-xl shadow-lg border border-white/50 rounded-full' 
+        isScrolled
+          ? 'top-4 w-[90%] md:max-w-4xl lg:max-w-6xl mx-auto bg-white/70 backdrop-blur-xl shadow-lg border border-white/50 rounded-full'
           : 'top-0 w-full bg-transparent border-transparent'
       )}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className={cn("flex justify-between items-center transition-all duration-300", isScrolled ? "h-14 md:h-16" : "h-20 lg:h-24")}>
           <div className="flex-shrink-0">
             <a
               href="#home"
+              aria-label="Go to Home"
               onClick={(e) => {
                 e.preventDefault();
                 handleMenuClick('home');
@@ -96,11 +98,21 @@ function Navbar() {
             </a>
           </div>
 
+          {/* Mobile Scrolled Profile Header */}
+          <div className={cn(
+            "absolute left-1/2 transform -translate-x-1/2 flex items-center gap-2 lg:hidden transition-all duration-500",
+            isScrolled ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
+          )}>
+            <img src={profileImg} alt="Dhruvil Patel" className="w-8 h-8 rounded-full object-cover shadow-sm" />
+            <span className="font-bold text-sm text-black tracking-wide">Dhruvil Patel</span>
+          </div>
+
           <div className="hidden lg:flex gap-3 items-center space-x-8">
             <div className="flex space-x-1 gap-2 px-4 py-2">
               {menuItems.map((item) => (
                 <button
                   key={item.id}
+                  aria-label={`Navigate to ${item.name}`}
                   onClick={() => handleMenuClick(item.id)}
                   className="relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 group"
                 >
@@ -129,7 +141,8 @@ function Navbar() {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-500 hover:text-[var(--color-primary)] transition-colors"
+                  aria-label={`Visit my profile`}
+                  className="text-gray-500 hover:text-[var(--color-primary)] transition-colors p-2"
                 >
                   {link.icon}
                 </motion.a>
@@ -137,8 +150,9 @@ function Navbar() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                aria-label="Book A Call"
                 onClick={() => handleMenuClick('contact')}
-                className="ml-2 btn-primary"
+                className="ml-2 btn-primary !py-2 !px-5 text-sm"
               >
                 Book A Call
               </motion.button>
@@ -147,6 +161,8 @@ function Navbar() {
 
           <div className="lg:hidden flex items-center">
             <button
+              aria-label="Toggle mobile menu"
+              aria-expanded={isOpen}
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-600 hover:text-black p-2 rounded-md hover:bg-gray-100 transition-colors"
             >
@@ -161,7 +177,7 @@ function Navbar() {
         initial={false}
         animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
         className={cn(
-          'lg:hidden overflow-hidden bg-white/90 backdrop-blur-md border-gray-200 shadow-xl',
+          'lg:hidden overflow-y-auto max-h-[85vh] bg-white/95 backdrop-blur-xl border-gray-200 shadow-xl',
           isScrolled ? 'rounded-2xl mt-4 border mx-4' : 'border-b',
           !isOpen && 'pointer-events-none'
         )}
@@ -188,7 +204,8 @@ function Navbar() {
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 hover:text-[var(--color-primary)] transition-colors p-2"
+                aria-label={`Visit my profile`}
+                className="text-gray-500 hover:text-[var(--color-primary)] transition-colors p-3"
               >
                 {link.icon}
               </a>

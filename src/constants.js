@@ -193,50 +193,80 @@ export const projects = [
   {
     id: 0,
     title: "ZenCart E-Commerce",
+    category: "E-Commerce",
     description:
-      " Built critical e-commerce features including guest and authenticated user carts, wishlists, order lifecycle management, and secure Razorpay payment integration Designed a feature-rich admin dashboard for managing products, orders, and reviews, significantly optimizing frontend performance via TanStack Query and efficient REST API architecture",
+      "Built critical e-commerce features including guest and authenticated user carts, wishlists, order lifecycle management, and secure Razorpay payment integration. Designed a feature-rich admin dashboard for managing products, orders, and reviews, significantly optimizing frontend performance via TanStack Query and efficient REST API architecture.",
     image: zencartImg,
-    tags: ["React JS", "Node.js", "Express", "MongoDB", "JWT", "TialwindCSS", "Chart.js"],
+    tags: ["React JS", "Node.js", "Express", "MongoDB", "JWT", "TailwindCSS", "Chart.js"],
+    stats: {
+      users: "10k+",
+      stars: "245",
+      completion: "100%"
+    },
     github: "https://github.com/pateldhruvil18/ZenCart-E-Commerce",
     webapp: "https://zen-cart-e-commerce.vercel.app/",
   },
   {
     id: 1,
     title: "Remote Team Productivity Tracker",
+    category: "SaaS",
     description:
       "A productivity tracking application for remote teams featuring time tracking, task management, team collaboration tools, and detailed productivity reports. Includes real-time chat and project management capabilities.",
     image: remoteTrackerImg,
-    tags: ["React JS", "Node.js", "Express", "MongoDB", "JWT", "TialwindCSS", "Chart.js"],
+    tags: ["React JS", "Node.js", "Express", "MongoDB", "Socket.io", "TailwindCSS"],
+    stats: {
+      users: "5k+",
+      stars: "128",
+      completion: "100%"
+    },
     github: "https://github.com/pateldhruvil18/Remote-Team-Tracker",
     webapp: "remote-team-tracker.vercel.app",
   },
   {
     id: 2,
     title: "AI Interview",
+    category: "AI/ML",
     description:
       "PrepAI is an industry-level, comprehensive AI-powered interview preparation SaaS platform. It allows users to practice coding, attend AI mock interviews, get real-time AI feedback, analyze their resumes, and participate in collaborative live coding rooms.",
     image: aiInterviewImg,
-    tags: ["React JS", "Node.js", "Express", "MongoDB", "JWT", "TialwindCSS", "Chart.js"],
+    tags: ["React JS", "Node.js", "OpenAI API", "MongoDB", "WebRTC", "TailwindCSS"],
+    stats: {
+      users: "25k+",
+      stars: "450",
+      completion: "95%"
+    },
     github: "https://github.com/pateldhruvil18/AI_Interview",
     webapp: "#",
   },
   {
     id: 3,
     title: "Blood Bank Management System",
+    category: "MERN Stack",
     description:
       "A comprehensive web application for managing blood bank operations including donor registration, blood inventory tracking, request management, and admin dashboard. Features real-time analytics and automated notifications for critical blood shortages.",
     image: bloodBankImg,
-    tags: ["HTML", "CSS", "Python", "SQLLite"],
+    tags: ["React JS", "Node.js", "Express", "MongoDB", "TailwindCSS"],
+    stats: {
+      users: "2k+",
+      stars: "85",
+      completion: "100%"
+    },
     github: "https://github.com/pateldhruvil18/Blood-Bank-Managment-System",
     webapp: "#",
   },
   {
     id: 4,
     title: "Explore More on GitHub",
+    category: "All",
     description:
       "Check out my GitHub profile to explore all my open-source projects, personal experiments, and code contributions.",
     image: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=500&h=300&fit=crop",
     tags: ["Open Source", "GitHub", "Contributions"],
+    stats: {
+      users: "N/A",
+      stars: "500+",
+      completion: "N/A"
+    },
     github: "https://github.com/pateldhruvil18",
     webapp: "https://github.com/pateldhruvil18",
   }

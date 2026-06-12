@@ -16,7 +16,7 @@ const Hero = () => {
       });
     }
   };
-  
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -43,17 +43,17 @@ const Hero = () => {
             animate="visible"
             className="flex flex-col space-y-6"
           >
-            <motion.div variants={itemVariants} className="inline-block">
+            <motion.div variants={itemVariants} className="inline-block mt-8 lg:mt-0">
               <span className="px-4 py-2 rounded-full bg-white text-sm font-medium text-[var(--color-primary)] border border-gray-200 shadow-sm inline-flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[var(--color-primary)] animate-pulse"></span>
                 Available for work
               </span>
             </motion.div>
 
-            <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-bold leading-tight text-black">
+            <motion.h1 variants={itemVariants} className="text-[clamp(3rem,8vw,4.5rem)] font-bold leading-tight text-black">
               Hi, I&apos;m <span className="text-gradient">Dhruvil Patel</span>
               <br />
-              <span className="text-3xl md:text-5xl text-gray-500 mt-4 block min-h-[60px]">
+              <span className="text-[clamp(1.5rem,4vw,3rem)] text-gray-500 mt-4 block min-h-[60px]">
                 <TypeAnimation
                   sequence={[
                     'MERN Stack Developer',
@@ -78,24 +78,24 @@ const Hero = () => {
             </motion.p>
 
             <motion.div variants={itemVariants} className="flex flex-wrap gap-4 pt-4">
-              <button 
+              <button
                 onClick={() => handleScroll('#projects')}
                 className="btn-primary flex items-center gap-2 group"
               >
                 View Projects
                 <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
               </button>
-              <a 
-                href="/Dhruvil Patel.pdf" 
-                download="Dhruvil_Patel_Resume.pdf"
-                className="px-8 py-4 bg-white text-black rounded-full font-semibold hover:bg-gray-50 transition-all duration-300 flex items-center gap-2 border border-gray-200 shadow-sm"
+              <a
+                href="/Dhruvil_resume_2026.pdf"
+                download="Dhruvil_resuem_2026.pdf"
+                className="px-8 py-4 bg-white text-black rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300 flex items-center gap-2 border border-gray-200 shadow-sm"
               >
                 Download Resume
                 <FaDownload />
               </a>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="flex items-center gap-6 pt-8">
+            <motion.div variants={itemVariants} className="hidden lg:flex items-center gap-6 pt-8">
               <span className="text-gray-400 font-medium uppercase tracking-wider text-sm">Connect with me</span>
               <div className="h-px bg-gray-200 flex-grow max-w-[100px]"></div>
               <div className="flex gap-4">
@@ -103,25 +103,28 @@ const Hero = () => {
                   href="https://github.com/pateldhruvil18"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center text-gray-500 hover:text-[var(--color-primary)] hover:border-[var(--color-primary)] transition-all duration-300 transform hover:-translate-y-1"
+                  aria-label="GitHub Profile"
+                  className="w-12 h-12 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center text-gray-500 hover:text-[var(--color-primary)] hover:border-[var(--color-primary)] transition-all duration-300 transform hover:-translate-y-1"
                 >
-                  <FaGithub size={18} />
+                  <FaGithub size={20} />
                 </a>
                 <a
                   href="https://linkedin.com/in/pateldhruvil18"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center text-gray-500 hover:text-[var(--color-primary)] hover:border-[var(--color-primary)] transition-all duration-300 transform hover:-translate-y-1"
+                  aria-label="LinkedIn Profile"
+                  className="w-12 h-12 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center text-gray-500 hover:text-[var(--color-primary)] hover:border-[var(--color-primary)] transition-all duration-300 transform hover:-translate-y-1"
                 >
-                  <FaLinkedin size={18} />
+                  <FaLinkedin size={20} />
                 </a>
                 <a
                   href="https://twitter.com/pateldhruvil18"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center text-gray-500 hover:text-[var(--color-primary)] hover:border-[var(--color-primary)] transition-all duration-300 transform hover:-translate-y-1"
+                  aria-label="Twitter Profile"
+                  className="w-12 h-12 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center text-gray-500 hover:text-[var(--color-primary)] hover:border-[var(--color-primary)] transition-all duration-300 transform hover:-translate-y-1"
                 >
-                  <FaTwitter size={18} />
+                  <FaTwitter size={20} />
                 </a>
               </div>
             </motion.div>
@@ -132,12 +135,12 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-            className="relative hidden lg:block"
+            className="relative hidden lg:block mt-12 lg:mt-0 w-full"
           >
-            <div className="relative w-full aspect-square max-w-md mx-auto">
+            <div className="relative w-[80%] sm:w-[60%] lg:w-full aspect-square max-w-md mx-auto">
               {/* Decorative elements behind image */}
               <div className="absolute inset-0 bg-gradient-to-tr from-[#5B80F0] to-blue-200 rounded-full blur-[100px] opacity-20 animate-pulse"></div>
-              
+
               {/* Main Image Container */}
               <div className="relative w-full h-full rounded-[2rem] glass-card overflow-hidden p-2 transform rotate-3 hover:rotate-0 transition-transform duration-500">
                 <div className="w-full h-full rounded-[1.5rem] bg-gray-100 overflow-hidden relative">

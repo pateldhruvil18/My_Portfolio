@@ -67,7 +67,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-24 relative" ref={ref}>
+    <section id="contact" className="py-16 md:py-24 relative" ref={ref}>
       <ToastContainer />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -141,7 +141,7 @@ const Contact = () => {
                     <input
                       type="text"
                       {...register('name', { required: 'Name is required' })}
-                      className={`w-full bg-gray-50 border ${errors.name ? 'border-red-500' : 'border-gray-200 focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)]'} rounded-xl px-4 py-3 text-black placeholder-gray-400 outline-none transition-all duration-300`}
+                      className={`w-full bg-gray-50 border ${errors.name ? 'border-red-500' : 'border-gray-200 focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)]'} rounded-xl px-4 py-3 text-base text-black placeholder-gray-400 outline-none transition-all duration-300`}
                       placeholder="John Doe"
                     />
                     {errors.name && <span className="text-red-500 text-xs mt-1 block">{errors.name.message}</span>}
@@ -159,7 +159,7 @@ const Contact = () => {
                           message: "Invalid email address"
                         }
                       })}
-                      className={`w-full bg-gray-50 border ${errors.email ? 'border-red-500' : 'border-gray-200 focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)]'} rounded-xl px-4 py-3 text-black placeholder-gray-400 outline-none transition-all duration-300`}
+                      className={`w-full bg-gray-50 border ${errors.email ? 'border-red-500' : 'border-gray-200 focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)]'} rounded-xl px-4 py-3 text-base text-black placeholder-gray-400 outline-none transition-all duration-300`}
                       placeholder="john@example.com"
                     />
                     {errors.email && <span className="text-red-500 text-xs mt-1 block">{errors.email.message}</span>}
@@ -172,7 +172,7 @@ const Contact = () => {
                   <input
                     type="text"
                     {...register('subject', { required: 'Subject is required' })}
-                    className={`w-full bg-gray-50 border ${errors.subject ? 'border-red-500' : 'border-gray-200 focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)]'} rounded-xl px-4 py-3 text-black placeholder-gray-400 outline-none transition-all duration-300`}
+                    className={`w-full bg-gray-50 border ${errors.subject ? 'border-red-500' : 'border-gray-200 focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)]'} rounded-xl px-4 py-3 text-base text-black placeholder-gray-400 outline-none transition-all duration-300`}
                     placeholder="Project Inquiry"
                   />
                   {errors.subject && <span className="text-red-500 text-xs mt-1 block">{errors.subject.message}</span>}
@@ -184,7 +184,7 @@ const Contact = () => {
                   <textarea
                     rows="5"
                     {...register('message', { required: 'Message is required' })}
-                    className={`w-full bg-gray-50 border ${errors.message ? 'border-red-500' : 'border-gray-200 focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)]'} rounded-xl px-4 py-3 text-black placeholder-gray-400 outline-none transition-all duration-300 resize-none`}
+                    className={`w-full bg-gray-50 border ${errors.message ? 'border-red-500' : 'border-gray-200 focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)]'} rounded-xl px-4 py-3 text-base text-black placeholder-gray-400 outline-none transition-all duration-300 resize-none`}
                     placeholder="Hello Dhruvil, I would like to discuss..."
                   ></textarea>
                   {errors.message && <span className="text-red-500 text-xs mt-1 block">{errors.message.message}</span>}
@@ -194,7 +194,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full btn-primary flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed group"
+                  className="w-full btn-primary flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed group touch-manipulation"
                 >
                   {isSubmitting ? (
                     <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>

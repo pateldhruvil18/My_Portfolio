@@ -2,133 +2,200 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { projects } from '../../constants';
+import { cn } from '../../lib/utils';
 
-const Card = ({ project, index, progress, targetScale }) => {
-  // We use scroll progress to scale down the cards when they are overlapped
-  const scale = useTransform(progress, [index / projects.length, 1], [1, targetScale]);
+const BrowserMockup = ({ src, alt, containerRef }) => {
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Parallax movement for the image inside the browser
+  const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
 
   return (
-    <div 
-      className="sticky w-full flex justify-center" 
-      style={{ 
-        top: `calc(15vh + ${index * 30}px)`, 
-        marginBottom: index === projects.length - 1 ? '0' : '15vh'
-      }}
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="w-full rounded-2xl border border-gray-200 bg-white shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] overflow-hidden group"
     >
-      <motion.div
-        style={{ scale }}
-        className="relative w-full max-w-5xl h-[500px] md:h-[450px] bg-white border border-gray-200 rounded-[32px] overflow-hidden shadow-2xl transform origin-top flex flex-col md:flex-row"
-      >
-        {/* Content Side */}
-        <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center order-2 md:order-1 bg-white relative z-10">
-          <div className="flex flex-wrap gap-2 mb-4">
-            {project.tags.slice(0, 3).map((tag, idx) => (
-              <span key={idx} className="text-xs font-bold text-[var(--color-primary)] bg-blue-50 border border-blue-100 px-3 py-1 rounded-full uppercase tracking-wide">
-                {tag}
-              </span>
-            ))}
-          </div>
-          
-          <h3 className="text-3xl md:text-4xl font-bold text-black mb-4">
-            {project.title}
-          </h3>
-          
-          <p className="text-gray-500 text-base md:text-lg mb-8 line-clamp-4 leading-relaxed">
-            {project.description}
-          </p>
-          
-          <div className="flex flex-wrap gap-4 mt-auto">
-            {project.webapp && project.webapp !== '#' && (
-              <a
-                href={project.webapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 px-6 py-3 bg-[var(--color-primary)] text-white rounded-xl hover:bg-blue-600 transition-colors font-medium shadow-sm flex-1 sm:flex-none"
-              >
-                <FaExternalLinkAlt size={16} />
-                Live Demo
-              </a>
-            )}
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 px-6 py-3 bg-gray-50 border border-gray-200 text-black rounded-xl hover:bg-gray-100 transition-colors font-medium flex-1 sm:flex-none"
-              >
-                <FaGithub size={18} />
-                Source Code
-              </a>
-            )}
-          </div>
-        </div>
-
-        {/* Image Side */}
-        <div className="w-full md:w-1/2 h-64 md:h-full relative overflow-hidden order-1 md:order-2 bg-gray-50 flex items-center justify-center p-8 border-l border-gray-100">
+      {/* MacOS Window Controls */}
+      <div className="h-10 border-b border-gray-100 bg-white/50 backdrop-blur-md flex items-center px-4 gap-2 relative z-10">
+        <div className="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E]"></div>
+        <div className="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123]"></div>
+        <div className="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29]"></div>
+      </div>
+      
+      {/* Image Container with Parallax & Hover Zoom */}
+      <div className="relative overflow-hidden bg-gray-50 aspect-[16/10] sm:aspect-video flex items-start justify-center">
+        <motion.div style={{ y }} className="w-full h-full">
           <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-auto max-h-full object-contain rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-700 ease-out"
+            src={src}
+            alt={alt}
+            loading="lazy"
+            className="w-full h-full object-cover sm:object-contain object-top transform transition-transform duration-700 ease-out group-hover:scale-105"
           />
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+};
+
+const ProjectSection = ({ project, index }) => {
+  const sectionRef = useRef(null);
+  
+  return (
+    <section 
+      ref={sectionRef}
+      className={cn(
+        "py-20 md:py-32 relative overflow-hidden",
+        index % 2 === 0 ? "bg-white" : "bg-slate-50"
+      )}
+    >
+      {/* Optional decorative blur element */}
+      <div className="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-[var(--color-primary)]/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-20 items-center">
+          
+          {/* Mobile Title (Order 1, Hidden on Desktop) */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="w-full flex flex-col order-1 lg:hidden"
+          >
+            <div className="flex items-center gap-4 mb-4">
+              <span className="text-sm font-bold text-gray-400 tracking-widest uppercase">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <div className="h-px w-12 bg-gray-200"></div>
+              <span className="px-3 py-1 rounded-full bg-blue-50 text-[var(--color-primary)] text-xs font-bold tracking-wider uppercase border border-blue-100">
+                {project.category || 'Featured'}
+              </span>
+            </div>
+            <h3 className="text-3xl font-bold text-black tracking-tight">
+              {project.title}
+            </h3>
+          </motion.div>
+
+          {/* Visual Side (Right 60%, Order 2 on Mobile, Order 2 on Desktop) */}
+          <div className="w-full lg:w-[60%] order-2 lg:order-2">
+            <BrowserMockup src={project.image} alt={project.title} containerRef={sectionRef} />
+          </div>
+
+          {/* Content Side (Left 40%, Order 3 on Mobile, Order 1 on Desktop) */}
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="w-full lg:w-[40%] flex flex-col order-3 lg:order-1 mt-4 lg:mt-0"
+          >
+            {/* Desktop Title (Hidden on Mobile) */}
+            <div className="hidden lg:flex items-center gap-4 mb-6">
+              <span className="text-sm font-bold text-gray-400 tracking-widest uppercase">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <div className="h-px w-12 bg-gray-200"></div>
+              <span className="px-3 py-1 rounded-full bg-blue-50 text-[var(--color-primary)] text-xs font-bold tracking-wider uppercase border border-blue-100">
+                {project.category || 'Featured'}
+              </span>
+            </div>
+
+            <h3 className="hidden lg:block text-4xl md:text-5xl font-bold text-black mb-6 tracking-tight">
+              {project.title}
+            </h3>
+
+            <p className="text-gray-500 text-lg leading-relaxed mb-8">
+              {project.description}
+            </p>
+
+            <div className="flex flex-wrap gap-2 mb-10">
+              {project.tags.map((tag, idx) => (
+                <span 
+                  key={idx} 
+                  className="text-sm font-medium text-gray-600 bg-white border border-gray-200 px-4 py-2 rounded-lg shadow-sm hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors cursor-default"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap gap-4 mt-auto">
+              {project.webapp && project.webapp !== '#' && (
+                <a
+                  href={project.webapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 px-8 py-4 bg-black text-white rounded-xl hover:bg-gray-800 transition-colors font-medium shadow-lg flex-1 sm:flex-none transform hover:-translate-y-1 duration-300"
+                >
+                  <FaExternalLinkAlt size={16} />
+                  Live Demo
+                </a>
+              )}
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 px-8 py-4 bg-white border border-gray-200 text-black rounded-xl hover:bg-gray-50 transition-colors font-medium shadow-sm flex-1 sm:flex-none transform hover:-translate-y-1 duration-300"
+                >
+                  <FaGithub size={18} />
+                  Source Code
+                </a>
+              )}
+            </div>
+          </motion.div>
+
         </div>
-      </motion.div>
-    </div>
+      </div>
+    </section>
   );
 };
 
 const Projects = () => {
-  const containerRef = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
-
-  const textVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
-  };
-
   return (
-    <section id="projects" className="py-24 relative bg-gray-50" ref={containerRef}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-12">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="text-center"
-        >
-          <motion.h2 variants={textVariants} className="text-4xl md:text-5xl font-bold mb-4 text-black">
-            Featured <span className="text-[var(--color-primary)]">Projects</span>
-          </motion.h2>
-          <motion.div variants={textVariants} className="w-24 h-1 bg-[var(--color-primary)] mx-auto rounded-full mb-6"></motion.div>
-          <motion.p variants={textVariants} className="text-gray-500 max-w-2xl mx-auto text-lg px-4">
-            A curated selection of my recent work.
-          </motion.p>
-        </motion.div>
-      </div>
+    <div id="projects" className="relative bg-white overflow-hidden">
+      {/* Section Header */}
+      <section className="pt-24 md:pt-32 pb-12 bg-white relative">
+        {/* Subtle grid background for the header */}
+        <div 
+          className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none"
+          style={{ maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 80%)', WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 80%)' }}
+        ></div>
 
-      <div className="relative w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pb-[10vh]">
-        {projects.map((project, i) => {
-          const targetScale = 1 - ( (projects.length - 1 - i) * 0.05 );
-          return (
-            <Card 
-              key={project.id} 
-              project={project} 
-              index={i} 
-              progress={scrollYProgress} 
-              targetScale={targetScale}
-            />
-          );
-        })}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6 tracking-tight"
+          >
+            Featured <span className="text-gray-400">Work</span>
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-gray-500 max-w-2xl mx-auto text-lg md:text-xl"
+          >
+            A showcase of modern web applications, bringing innovative ideas to life with clean code and premium design.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Projects Flow */}
+      <div className="flex flex-col">
+        {projects.map((project, index) => (
+          <ProjectSection key={project.id} project={project} index={index} />
+        ))}
       </div>
-    </section>
+    </div>
   );
 };
 

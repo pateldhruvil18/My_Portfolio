@@ -55,7 +55,7 @@ const Services = () => {
   };
 
   return (
-    <section id="services" className="py-24 relative bg-gray-50" ref={ref}>
+    <section id="services" className="py-16 md:py-24 relative bg-gray-50" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}

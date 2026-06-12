@@ -37,7 +37,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative pt-20 pb-10 border-t border-gray-200 bg-white overflow-hidden">
+    <footer className="relative pt-16 md:pt-20 pb-10 border-t border-gray-200 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-8 mb-16">
           {/* Brand & Description */}

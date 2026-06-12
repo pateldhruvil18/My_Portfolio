@@ -147,4 +147,28 @@
     background: rgba(91, 128, 240, 0.3);
     color: #000;
   }
+
+  /* Premium Dark Theme Utilities for Project Section */
+  .premium-dark-bg {
+    background-color: #050505;
+    background-image: radial-gradient(circle at 50% 0%, #1A1A2E 0%, transparent 60%);
+  }
+
+  .premium-dark-grid {
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: -1px -1px;
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+  }
+
+  .premium-card-glass {
+    background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+  }
 }

@@ -49,7 +49,7 @@ const Experience = () => {
   };
 
   return (
-    <section id="experience" className="py-24 relative" ref={ref}>
+    <section id="experience" className="py-16 md:py-24 relative" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           variants={containerVariants}
