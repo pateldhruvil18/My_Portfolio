@@ -70,8 +70,10 @@ function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className={cn(
-        'fixed top-0 w-full z-50 transition-all duration-300',
-        isScrolled ? 'glass-effect border-b' : 'bg-transparent'
+        'fixed inset-x-0 z-50 transition-all duration-500 ease-in-out',
+        isScrolled 
+          ? 'top-4 w-[90%] md:max-w-4xl lg:max-w-6xl mx-auto bg-white/70 backdrop-blur-xl shadow-lg border border-white/50 rounded-full' 
+          : 'top-0 w-full bg-transparent border-transparent'
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -85,17 +87,17 @@ function Navbar() {
               }}
               className="flex items-center space-x-2 group relative"
             >
-              <div className="w-10 h-10 bg-primary/20 backdrop-blur-sm border border-primary/50 rounded-xl flex items-center justify-center transform group-hover:rotate-12 transition-all duration-300 shadow-[0_0_15px_rgba(99,102,241,0.5)]">
-                <span className="text-white font-bold text-lg text-gradient">D</span>
+              <div className="w-10 h-10 bg-black rounded-xl flex items-center justify-center transform group-hover:rotate-12 transition-all duration-300 shadow-md">
+                <span className="text-white font-bold text-lg">D</span>
               </div>
-              <span className="text-white font-bold tracking-wider hidden sm:block group-hover:text-primary transition-colors">
+              <span className="text-black font-bold tracking-wider hidden sm:block group-hover:text-[var(--color-primary)] transition-colors">
                 Dhruvil.
               </span>
             </a>
           </div>
 
           <div className="hidden lg:flex gap-3 items-center space-x-8">
-            <div className="flex space-x-1 gap-2 bg-white/5 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
+            <div className="flex space-x-1 gap-2 px-4 py-2">
               {menuItems.map((item) => (
                 <button
                   key={item.id}
@@ -105,13 +107,13 @@ function Navbar() {
                   {activeSection === item.id && (
                     <motion.div
                       layoutId="nav-pill"
-                      className="absolute inset-0 bg-primary/20 rounded-full"
+                      className="absolute inset-0 bg-gray-100 rounded-full"
                       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                     />
                   )}
                   <span className={cn(
                     'relative z-10 transition-colors duration-300',
-                    activeSection === item.id ? 'text-white' : 'text-gray-400 group-hover:text-white'
+                    activeSection === item.id ? 'text-black' : 'text-gray-500 group-hover:text-black'
                   )}>
                     {item.name}
                   </span>
@@ -127,7 +129,7 @@ function Navbar() {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-primary transition-colors"
+                  className="text-gray-500 hover:text-[var(--color-primary)] transition-colors"
                 >
                   {link.icon}
                 </motion.a>
@@ -136,9 +138,9 @@ function Navbar() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleMenuClick('contact')}
-                className="ml-2 px-6 py-2 bg-white text-bg-darker rounded-full text-sm font-bold hover:bg-primary hover:text-white transition-all duration-300"
+                className="ml-2 btn-primary"
               >
-                Let&apos;s Talk
+                Book A Call
               </motion.button>
             </div>
           </div>
@@ -146,7 +148,7 @@ function Navbar() {
           <div className="lg:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-300 hover:text-white p-2 rounded-md hover:bg-white/10 transition-colors"
+              className="text-gray-600 hover:text-black p-2 rounded-md hover:bg-gray-100 transition-colors"
             >
               {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
             </button>
@@ -154,18 +156,13 @@ function Navbar() {
         </div>
       </div>
 
-      {/* Scroll Progress Bar */}
-      <motion.div
-        className="h-[2px] bg-gradient-to-r from-primary via-secondary to-accent origin-left"
-        style={{ scaleX }}
-      />
-
       {/* Mobile Menu */}
       <motion.div
         initial={false}
         animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
         className={cn(
-          'lg:hidden overflow-hidden glass-effect border-t-0',
+          'lg:hidden overflow-hidden bg-white/90 backdrop-blur-md border-gray-200 shadow-xl',
+          isScrolled ? 'rounded-2xl mt-4 border mx-4' : 'border-b',
           !isOpen && 'pointer-events-none'
         )}
       >
@@ -177,21 +174,21 @@ function Navbar() {
               className={cn(
                 'block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all',
                 activeSection === item.id
-                  ? 'bg-primary/20 text-white border border-primary/30'
-                  : 'text-gray-400 hover:text-white hover:bg-white/5'
+                  ? 'bg-gray-100 text-black'
+                  : 'text-gray-500 hover:text-black hover:bg-gray-50'
               )}
             >
               {item.name}
             </button>
           ))}
-          <div className="flex justify-center space-x-6 pt-6 pb-2 border-t border-white/10 mt-4">
+          <div className="flex justify-center space-x-6 pt-6 pb-2 border-t border-gray-100 mt-4">
             {socialLinks.map((link, index) => (
               <a
                 key={index}
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-primary transition-colors p-2"
+                className="text-gray-500 hover:text-[var(--color-primary)] transition-colors p-2"
               >
                 {link.icon}
               </a>

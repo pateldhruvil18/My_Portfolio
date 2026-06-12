@@ -58,6 +58,10 @@ const cmLogo = 'https://via.placeholder.com/400x250/8245ec/ffffff?text=Coding+Ma
 const imagesearchLogo = 'https://via.placeholder.com/400x250/8245ec/ffffff?text=Image+Search';
 const removebgLogo = 'https://via.placeholder.com/400x250/8245ec/ffffff?text=Remove+BG';
 
+import zencartImg from './assets/projects/zencart_mockup_1781258768523.png';
+import remoteTrackerImg from './assets/projects/remote_tracker_mockup_1781258779219.png';
+import aiInterviewImg from './assets/projects/ai_interview_mockup_1781258791277.png';
+import bloodBankImg from './assets/projects/blood_bank_mockup_1781258803234.png';
 
 export const SkillsInfo = [
   {
@@ -191,7 +195,7 @@ export const projects = [
     title: "ZenCart E-Commerce",
     description:
       " Built critical e-commerce features including guest and authenticated user carts, wishlists, order lifecycle management, and secure Razorpay payment integration Designed a feature-rich admin dashboard for managing products, orders, and reviews, significantly optimizing frontend performance via TanStack Query and efficient REST API architecture",
-    image: "https://images.unsplash.com/photo-1615461066841-6116e61058f4?w=500&h=300&fit=crop",
+    image: zencartImg,
     tags: ["React JS", "Node.js", "Express", "MongoDB", "JWT", "TialwindCSS", "Chart.js"],
     github: "https://github.com/pateldhruvil18/ZenCart-E-Commerce",
     webapp: "https://zen-cart-e-commerce.vercel.app/",
@@ -201,7 +205,7 @@ export const projects = [
     title: "Remote Team Productivity Tracker",
     description:
       "A productivity tracking application for remote teams featuring time tracking, task management, team collaboration tools, and detailed productivity reports. Includes real-time chat and project management capabilities.",
-    image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop",
+    image: remoteTrackerImg,
     tags: ["React JS", "Node.js", "Express", "MongoDB", "JWT", "TialwindCSS", "Chart.js"],
     github: "https://github.com/pateldhruvil18/Remote-Team-Tracker",
     webapp: "remote-team-tracker.vercel.app",
@@ -211,7 +215,7 @@ export const projects = [
     title: "AI Interview",
     description:
       "PrepAI is an industry-level, comprehensive AI-powered interview preparation SaaS platform. It allows users to practice coding, attend AI mock interviews, get real-time AI feedback, analyze their resumes, and participate in collaborative live coding rooms.",
-    image: "https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=500&h=300&fit=crop",
+    image: aiInterviewImg,
     tags: ["React JS", "Node.js", "Express", "MongoDB", "JWT", "TialwindCSS", "Chart.js"],
     github: "https://github.com/pateldhruvil18/AI_Interview",
     webapp: "#",
@@ -221,8 +225,8 @@ export const projects = [
     title: "Blood Bank Management System",
     description:
       "A comprehensive web application for managing blood bank operations including donor registration, blood inventory tracking, request management, and admin dashboard. Features real-time analytics and automated notifications for critical blood shortages.",
-    image: "https://images.unsplash.com/photo-1615461066841-6116e61058f4?w=500&h=300&fit=crop",
-    tags: ["HTML", "CSS", "Pyhton", "SQLLite"],
+    image: bloodBankImg,
+    tags: ["HTML", "CSS", "Python", "SQLLite"],
     github: "https://github.com/pateldhruvil18/Blood-Bank-Managment-System",
     webapp: "#",
   },

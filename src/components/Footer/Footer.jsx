@@ -37,22 +37,18 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative pt-20 pb-10 border-t border-white/10 bg-bg-darker overflow-hidden">
-      {/* Decorative Gradient */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></div>
-      <div className="absolute bottom-0 left-0 w-full h-96 bg-gradient-to-t from-primary/5 to-transparent pointer-events-none"></div>
-
+    <footer className="relative pt-20 pb-10 border-t border-gray-200 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-8 mb-16">
           {/* Brand & Description */}
           <div className="md:col-span-5 lg:col-span-4">
             <a href="#home" onClick={(e) => handleScroll(e, '#home')} className="flex items-center gap-3 mb-6 group inline-flex">
-              <div className="w-10 h-10 rounded-xl bg-primary/20 border border-primary/50 flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
-                <span className="font-bold text-gradient text-lg">D</span>
+              <div className="w-10 h-10 rounded-xl bg-black flex items-center justify-center group-hover:rotate-12 transition-transform duration-300 shadow-sm">
+                <span className="font-bold text-white text-lg">D</span>
               </div>
-              <span className="font-bold text-xl tracking-wider text-white">Dhruvil.</span>
+              <span className="font-bold text-xl tracking-wider text-black">Dhruvil.</span>
             </a>
-            <p className="text-gray-400 mb-8 leading-relaxed max-w-sm">
+            <p className="text-gray-500 mb-8 leading-relaxed max-w-sm">
               Building premium digital experiences with modern web technologies. Focused on design, performance, and user experience.
             </p>
             <div className="flex gap-4">
@@ -63,7 +59,7 @@ const Footer = () => {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full glass-effect flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary/20 hover:border-primary/50 transition-colors"
+                  className="w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-500 hover:text-[var(--color-primary)] hover:border-[var(--color-primary)] hover:bg-blue-50 transition-colors"
                   aria-label={link.name}
                 >
                   {link.icon}
@@ -74,16 +70,16 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div className="md:col-span-3 lg:col-span-2 lg:col-start-7">
-            <h4 className="text-white font-bold mb-6 text-lg">Quick Links</h4>
+            <h4 className="text-black font-bold mb-6 text-lg">Quick Links</h4>
             <ul className="space-y-4">
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   <a 
                     href={link.href} 
                     onClick={(e) => handleScroll(e, link.href)}
-                    className="text-gray-400 hover:text-primary transition-colors flex items-center gap-2 group"
+                    className="text-gray-500 hover:text-[var(--color-primary)] transition-colors flex items-center gap-2 group"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary/50 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-primary)] opacity-0 group-hover:opacity-100 transition-opacity"></span>
                     {link.name}
                   </a>
                 </li>
@@ -93,18 +89,18 @@ const Footer = () => {
 
           {/* Services */}
           <div className="md:col-span-4 lg:col-span-3">
-            <h4 className="text-white font-bold mb-6 text-lg">Services</h4>
+            <h4 className="text-black font-bold mb-6 text-lg">Services</h4>
             <ul className="space-y-4">
-              <li className="text-gray-400">Frontend Development</li>
-              <li className="text-gray-400">Backend Development</li>
-              <li className="text-gray-400">UI/UX Implementation</li>
-              <li className="text-gray-400">Performance Optimization</li>
+              <li className="text-gray-500">Frontend Development</li>
+              <li className="text-gray-500">Backend Development</li>
+              <li className="text-gray-500">UI/UX Implementation</li>
+              <li className="text-gray-500">Performance Optimization</li>
             </ul>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-500 text-sm flex items-center gap-2">
             © {currentYear} Dhruvil Patel. All rights reserved.
           </p>

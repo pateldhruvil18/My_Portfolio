@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import Lenis from 'lenis';
 import './App.css';
-import CustomCursor from './components/ui/CustomCursor';
-import Background3D from './components/ui/Background3D';
+import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
 import About from './components/About/About';
@@ -11,7 +10,7 @@ import Experience from './components/Experience/Experience';
 import Projects from './components/Projects/Projects';
 import Services from './components/Services/Services';
 import GithubStats from './components/GithubStats/GithubStats';
-import Testimonials from './components/Testimonials/Testimonials';
+
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 
@@ -42,10 +41,7 @@ function App() {
   }, []);
 
   return (
-    <div className='relative min-h-screen overflow-x-hidden bg-bg-darker text-slate-100 selection:bg-primary/30'>
-      <CustomCursor />
-      <Background3D />
-
+    <div className='relative min-h-screen overflow-x-hidden bg-[var(--color-bg-main)] text-[var(--color-text-main)] selection:bg-primary/30'>
       <div className='relative z-10'>
         <Navbar />
         <main className='space-y-24'>
@@ -55,7 +51,7 @@ function App() {
           <Experience />
           <Projects />
           <Services />
-          <Testimonials />
+
           <GithubStats />
           <Contact />
         </main>

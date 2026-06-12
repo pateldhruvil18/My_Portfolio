@@ -51,10 +51,6 @@ const Testimonials = () => {
 
   return (
     <section id="testimonials" className="py-24 relative overflow-hidden" ref={ref}>
-      {/* Decorative background elements */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px] -translate-y-1/2 -translate-x-1/2"></div>
-      <div className="absolute top-1/2 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -62,11 +58,11 @@ const Testimonials = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Client <span className="text-gradient">Testimonials</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black">
+            Client <span className="text-[var(--color-primary)]">Testimonials</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full"></div>
-          <p className="mt-6 text-gray-400 max-w-2xl mx-auto text-lg">
+          <div className="w-24 h-1 bg-[var(--color-primary)] mx-auto rounded-full"></div>
+          <p className="mt-6 text-gray-500 max-w-2xl mx-auto text-lg">
             Don&apos;t just take my word for it. Here&apos;s what people I&apos;ve worked with have to say.
           </p>
         </motion.div>
@@ -100,22 +96,22 @@ const Testimonials = () => {
           >
             {testimonials.map((testimonial) => (
               <SwiperSlide key={testimonial.id} className="max-w-md w-full">
-                <div className="glass-card p-8 rounded-3xl h-full flex flex-col relative mx-4">
-                  <FaQuoteLeft className="text-4xl text-primary/20 absolute top-8 right-8" />
+                <div className="bg-white border border-gray-100 shadow-sm p-8 rounded-[22px] h-full flex flex-col relative mx-4">
+                  <FaQuoteLeft className="text-4xl text-[var(--color-primary)] opacity-10 absolute top-8 right-8" />
                   
-                  <p className="text-gray-300 text-lg leading-relaxed mb-8 relative z-10 flex-grow">
+                  <p className="text-gray-600 text-lg leading-relaxed mb-8 relative z-10 flex-grow italic">
                     &quot;{testimonial.content}&quot;
                   </p>
                   
-                  <div className="flex items-center gap-4 border-t border-white/10 pt-6 mt-auto">
+                  <div className="flex items-center gap-4 border-t border-gray-100 pt-6 mt-auto">
                     <img 
                       src={testimonial.image} 
                       alt={testimonial.name}
-                      className="w-14 h-14 rounded-full border-2 border-primary object-cover"
+                      className="w-14 h-14 rounded-full border-2 border-[var(--color-primary)] object-cover"
                     />
                     <div>
-                      <h4 className="text-white font-bold">{testimonial.name}</h4>
-                      <p className="text-gray-400 text-sm">{testimonial.role} @ <span className="text-primary">{testimonial.company}</span></p>
+                      <h4 className="text-black font-bold">{testimonial.name}</h4>
+                      <p className="text-gray-500 text-sm">{testimonial.role} @ <span className="text-[var(--color-primary)] font-medium">{testimonial.company}</span></p>
                     </div>
                   </div>
                 </div>

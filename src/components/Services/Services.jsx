@@ -55,7 +55,7 @@ const Services = () => {
   };
 
   return (
-    <section id="services" className="py-24 relative" ref={ref}>
+    <section id="services" className="py-24 relative bg-gray-50" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -63,11 +63,11 @@ const Services = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black">
             My <span className="text-gradient">Services</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full"></div>
-          <p className="mt-6 text-gray-400 max-w-2xl mx-auto text-lg">
+          <div className="w-24 h-1 bg-[var(--color-primary)] mx-auto rounded-full"></div>
+          <p className="mt-6 text-gray-500 max-w-2xl mx-auto text-lg">
             Comprehensive solutions to bring your digital ideas to life with state-of-the-art technologies.
           </p>
         </motion.div>
@@ -82,19 +82,19 @@ const Services = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="glass-card p-8 rounded-3xl group hover:-translate-y-2 transition-transform duration-300 relative overflow-hidden border border-white/5 hover:border-primary/50"
+              className="glass-card p-8 rounded-[22px] group hover:-translate-y-2 transition-transform duration-300 relative overflow-hidden border border-gray-100 bg-white"
             >
               {/* Glow effect on hover */}
-              <div className="absolute -inset-2 bg-gradient-to-r from-primary/20 to-secondary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full"></div>
+              <div className="absolute -inset-2 bg-blue-50 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full z-0"></div>
               
               <div className="relative z-10">
-                <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                <div className="w-16 h-16 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-[var(--color-primary)] mb-6 group-hover:scale-110 group-hover:bg-[var(--color-primary)] group-hover:text-white transition-all duration-300 shadow-sm">
                   {service.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-primary transition-colors">
+                <h3 className="text-2xl font-bold text-black mb-4 group-hover:text-[var(--color-primary)] transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-gray-400 leading-relaxed">
+                <p className="text-gray-500 leading-relaxed">
                   {service.description}
                 </p>
               </div>
