@@ -28,7 +28,7 @@ const Contact = () => {
     try {
       // Simulating network request for demo purposes
       await new Promise(resolve => setTimeout(resolve, 1500));
-      
+
       toast.success('Message sent successfully! I will get back to you soon.', {
         position: 'bottom-right',
         theme: 'light'
@@ -49,19 +49,19 @@ const Contact = () => {
     {
       icon: <HiOutlineMail size={24} />,
       title: 'Email',
-      value: 'pateldhruvil1810@gmail.com',
-      link: 'mailto:pateldhruvil1810@gmail.com'
+      value: 'dhp204600@gmail.com',
+      link: 'mailto:dhp204600@gmail.com'
     },
     {
       icon: <FaPhoneAlt size={22} />,
       title: 'Phone',
-      value: '+91 9876543210', // Placeholder
-      link: 'tel:+919876543210'
+      value: '+91 97XXXXXXXX', // Placeholder
+      link: 'tel:+919773205176'
     },
     {
       icon: <FaMapMarkerAlt size={24} />,
       title: 'Location',
-      value: 'Mathura, India',
+      value: 'Gandhinagar, Gujarat, India',
       link: '#'
     }
   ];
@@ -94,10 +94,10 @@ const Contact = () => {
             className="lg:col-span-5 space-y-8"
           >
             <h3 className="text-2xl font-bold text-black mb-6">Contact Information</h3>
-            
+
             <div className="space-y-6">
               {contactInfo.map((info, index) => (
-                <a 
+                <a
                   key={index}
                   href={info.link}
                   className="bg-white border border-gray-100 shadow-sm p-6 rounded-[22px] flex items-center gap-6 group hover:-translate-y-1 hover:shadow-md transition-all duration-300 block"
@@ -112,7 +112,7 @@ const Contact = () => {
                 </a>
               ))}
             </div>
-            
+
             {/* Map Placeholder */}
             <div className="w-full h-48 rounded-[22px] overflow-hidden bg-blue-50 relative border border-blue-100 group mt-8">
               <div className="absolute inset-0 flex items-center justify-center flex-col gap-2">
@@ -130,9 +130,9 @@ const Contact = () => {
             className="lg:col-span-7"
           >
             <div className="bg-white p-8 sm:p-10 rounded-[32px] border border-gray-100 shadow-lg relative overflow-hidden">
-              
+
               <h3 className="text-2xl font-bold text-black mb-8">Send Me a Message</h3>
-              
+
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {/* Name Input */}
@@ -146,13 +146,13 @@ const Contact = () => {
                     />
                     {errors.name && <span className="text-red-500 text-xs mt-1 block">{errors.name.message}</span>}
                   </div>
-                  
+
                   {/* Email Input */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Your Email</label>
                     <input
                       type="email"
-                      {...register('email', { 
+                      {...register('email', {
                         required: 'Email is required',
                         pattern: {
                           value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
