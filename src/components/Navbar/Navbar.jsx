@@ -47,22 +47,25 @@ function Navbar() {
     setActiveSection(sectionId);
     setIsOpen(false);
 
-    if (sectionId === 'home') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
+    // Add a small delay to allow the mobile menu to close before scrolling
+    setTimeout(() => {
+      if (sectionId === 'home') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
 
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const headerOffset = 100;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const headerOffset = 100;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 150);
   }, []);
 
   return (
@@ -197,7 +200,14 @@ function Navbar() {
               {item.name}
             </button>
           ))}
-          <div className="flex justify-center space-x-6 pt-6 pb-2 border-t border-gray-100 mt-4">
+          <div className="pt-4 pb-2 border-t border-gray-100 mt-2">
+            <button
+              onClick={() => handleMenuClick('contact')}
+              className="w-full btn-primary !py-3 !px-5 text-sm font-medium rounded-xl mb-4"
+            >
+              Book A Call
+            </button>
+            <div className="flex justify-center space-x-6">
             {socialLinks.map((link, index) => (
               <a
                 key={index}
@@ -210,6 +220,7 @@ function Navbar() {
                 {link.icon}
               </a>
             ))}
+            </div>
           </div>
         </div>
       </motion.div>
